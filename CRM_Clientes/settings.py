@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clientes', #AGREGAMOS LA APP "clientes"
     'rest_framework', #AGREGAMOS LA APP "rest-framework"
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +54,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', #----------------------------------------------------
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:3000',
+)
+
+
 
 ROOT_URLCONF = 'CRM_Clientes.urls'
 
@@ -137,7 +149,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#try:
-#    from .local_settings import DATABASES, DEBUG
-#except ImportError as e:
-#    print('Error:', e.msg)
+try:
+    from .local_settings import DATABASES, DEBUG
+except ImportError as e:
+    print('Error:', e.msg)
+
