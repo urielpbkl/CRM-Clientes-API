@@ -3,11 +3,11 @@ from django.db.models.fields import CharField, IntegerField
 
 # Create your models here.
 class Clientes(models.Model):
-    nombre = CharField(max_length=40)
-    empresa = CharField(max_length=40)
-    email = CharField(max_length=40)
-    telefono = models.IntegerField(null=True)
-    notas = CharField(max_length=4000)
+    nombre = models.CharField(max_length=40)
+    empresa = models.CharField(max_length=40)
+    email = models.CharField(max_length=40)
+    telefono = models.CharField(max_length=20)
+    notas = models.CharField(max_length=4000)
 
     class Meta:
         verbose_name = 'Cliente'
